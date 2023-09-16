@@ -77,11 +77,33 @@
   justify-content: space-evenly;
 }
 
-.searchCategories{
+.searchCategories {
   background-color: black;
-  width: 15%;
+  width: 17%;
   text-align: center;
   color: white;
   padding: 2px 10px;
   border-radius: 5px;
+}
+
+.searchCategories:hover {
+  cursor: pointer;
+}
+
+#imgContainer {
+  flex-wrap: wrap;
+  width: 50%;
+  margin: auto;
+  justify-content: space-evenly;
+}
+
+#imgBox{
+  width: 30%;
+  margin: 10px 0px;
+}
+
+
+#imgBox > img{
+  display: block;
+  margin: auto;
 }
