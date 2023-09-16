@@ -71,7 +71,7 @@
 }
 
 #quickSearches {
-  width: 30%;
+  width: 50%;
   margin: 3% auto;
   align-items: center;
   justify-content: space-evenly;
@@ -97,13 +97,74 @@
   justify-content: space-evenly;
 }
 
-#imgBox{
-  width: 30%;
+#imgBox {
+  width: 27%;
   margin: 10px 0px;
+  /* border: 1px solid black; */
+  flex-shrink: 0;
 }
 
 
-#imgBox > img{
+#imgBox>img {
   display: block;
   margin: auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+
+@media (max-width : 1232px) {
+  #imgContainer {
+    width: 60%;
+  }
+}
+
+@media (max-width : 1024px) {
+  #imgContainer {
+    width: 70%;
+  }
+
+  #quickSearches {
+    width: 70%;
+  }
+}
+
+
+
+/* Add a media query for medium-sized screens */
+@media (max-width: 768px) {
+  #imgContainer {
+    width: 80%;
+    /* Adjust the width as needed */
+  }
+
+  #imgBox {
+    width: 40%;
+    /* Two divs in a row */
+  }
+}
+
+/* Add a media query for small screens */
+@media (max-width: 576px) {
+  #imgContainer {
+    width: 80%;
+    /* Full width, one div in a row */
+  }
+
+  #imgBox {
+    width: 100%;
+    /* One div in a row */
+  }
+
+  #quickSearches {
+    flex-direction: column;
+    /* width: 100%; */
+  }
+
+  .searchCategories{
+    width: 100%;
+    margin: 2px 0;
+  }
+
+
 }

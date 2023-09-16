@@ -5,12 +5,13 @@ const Home = () => {
 
     const [urls, setUrls] = useState([]);
     const [query, setQuery] = useState("Cars");
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
         async function image() {
             try {
                 const client = createClient('FZ5iqlPvSokTYIvEAWCNw0o1M5nlqciqdjX0pn0AnGUQUKte57SwGFXA');
-                const images = await client.photos.search({ query, per_page: 80 ,orientation: "landscape" });
+                const images = await client.photos.search({ query, per_page: 80, orientation: "landscape" });
 
                 setUrls(images.photos);
             }
@@ -21,6 +22,15 @@ const Home = () => {
         image();
     }, [query]);
 
+    const onChange = (e) => {
+        setSearch(e.target.value);
+    }
+
+
+    const handleSearch = () => {
+        setQuery(search);
+    }
+
     return (
         <>
             <h1 id='title'>
@@ -28,8 +38,8 @@ const Home = () => {
             </h1>
 
             <div className='d-flex' id='searchBar'>
-                <input type="text" placeholder='Search' id='searchBox' />
-                <i className="fa-solid fa-magnifying-glass" id='searchButton' />
+                <input type="text" placeholder='Search' value={search} id='searchBox' onChange={onChange} />
+                <i className="fa-solid fa-magnifying-glass" id='searchButton' onClick={handleSearch} />
             </div>
 
             <div id="quickSearches" className='d-flex'>
@@ -43,7 +53,7 @@ const Home = () => {
                 {
                     urls.map((url) => (
                         <div key={url.id} id='imgBox'>
-                            <img src={url.src.small} alt="" />
+                            <img src={url.src.medium} alt="" />
                         </div>
                     ))
                 }
