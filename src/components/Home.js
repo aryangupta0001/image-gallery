@@ -44,7 +44,7 @@ const Home = () => {
             let rect = searchBar.getBoundingClientRect();
             let x = rect.left;
             let y = rect.top;
-            if (y !== 0) {
+            if (y > 0) {
                 if (screenWidth > 768) {
                     searchBar.style.width = "20%";
                 }
