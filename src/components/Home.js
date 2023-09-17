@@ -6,6 +6,7 @@ const Home = () => {
     const [urls, setUrls] = useState([]);
     const [query, setQuery] = useState("Cars");
     const [search, setSearch] = useState("");
+    const [quality, setQuality] = useState("standard");
 
     useEffect(() => {
         async function image() {
@@ -40,6 +41,12 @@ const Home = () => {
             <div className='d-flex' id='searchBar'>
                 <input type="text" placeholder='Search' value={search} id='searchBox' onChange={onChange} />
                 <i className="fa-solid fa-magnifying-glass" id='searchButton' onClick={handleSearch} />
+            </div>
+
+            <div id='imgQuality'>
+                Image Quality :
+                <span>Standard</span>
+                <span>HD</span>
             </div>
 
             <div id="quickSearches" className='d-flex'>
