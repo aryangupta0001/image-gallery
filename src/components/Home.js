@@ -4,9 +4,10 @@ import { createClient } from 'pexels';
 const Home = () => {
 
     const [urls, setUrls] = useState([]);
-    const [query, setQuery] = useState("Cars");
+    const [query, setQuery] = useState("General");
     const [search, setSearch] = useState("");
-    const [quality, setQuality] = useState("standard");
+    const [quality, setQuality] = useState("medium");
+    const [searchWidth, setSearchWidth] = useState("20%");
 
     useEffect(() => {
         async function image() {
@@ -23,6 +24,32 @@ const Home = () => {
         image();
     }, [query]);
 
+
+    useEffect(() => {
+        const searchBar = document.getElementById("searchBar");
+        const imgContainer = document.getElementById("imgContainer");
+        let screenWidth = window.innerWidth;
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY === 0) {
+                if (screenWidth > 768) {
+                    searchBar.style.width = "20%";
+                }
+                else if (screenWidth > 576) {
+                    searchBar.style.width = "30%";
+                }
+                else {
+                    searchBar.style.width = "65%";
+                }
+            }
+
+            else {
+                searchBar.style.width = window.getComputedStyle(imgContainer).width;
+            }
+        });
+
+    })
+
     const onChange = (e) => {
         setSearch(e.target.value);
     }
@@ -38,16 +65,16 @@ const Home = () => {
                 Snapshot
             </h1>
 
-            <div className='d-flex' id='searchBar'>
+            <div className='d-flex' id='searchBar' >
                 <input type="text" placeholder='Search' value={search} id='searchBox' onChange={onChange} />
                 <i className="fa-solid fa-magnifying-glass" id='searchButton' onClick={handleSearch} />
             </div>
 
-            <div id='imgQuality'>
+            {/* <div id='imgQuality' className='d-flex'>
                 Image Quality :
-                <span>Standard</span>
-                <span>HD</span>
-            </div>
+                <div onClick={() => { setQuality("medium") }}>Standard</div>
+                <div onClick={() => { setQuality("original") }}>HD</div>
+            </div> */}
 
             <div id="quickSearches" className='d-flex'>
                 <div className="searchCategories" onClick={() => { setQuery("Mountain") }}>Mountain</div>
@@ -60,7 +87,7 @@ const Home = () => {
                 {
                     urls.map((url) => (
                         <div key={url.id} id='imgBox'>
-                            <img src={url.src.medium} alt="" />
+                            <img src={url.src[quality]} alt="" />
                         </div>
                     ))
                 }

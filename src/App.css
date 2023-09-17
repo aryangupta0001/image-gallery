@@ -49,12 +49,16 @@
 }
 
 #searchBar {
+  position: sticky;
+  top: 0;
   margin: auto;
   padding: 8px 15px;
   width: 20%;
   align-items: center;
   justify-content: center;
   background-color: rgb(249, 249, 249);
+
+  transition: width 0.3s;
 }
 
 #searchBox {
@@ -70,7 +74,24 @@
   font-size: "1.5rem";
 }
 
+#imgQuality {
+  width: 30%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 15px auto;
+}
 
+#imgQuality div {
+  background-color: black;
+  width: 20%;
+  padding: 5px;
+  color: white;
+  text-align: center;
+}
+
+#imgQuality div:hover {
+  cursor: pointer;
+}
 
 #searchButton:hover {
   cursor: pointer;
@@ -149,7 +170,7 @@
     /* Two divs in a row */
   }
 
-  #searchBar{
+  #searchBar {
     width: 30%;
   }
 }
@@ -176,7 +197,7 @@
     margin: 2px 0;
   }
 
-  #searchBar{
+  #searchBar {
     width: 65%;
   }
 
