@@ -7,11 +7,15 @@ const Home = () => {
     const [query, setQuery] = useState("General");
     const [search, setSearch] = useState("");
     const [quality, setQuality] = useState("medium");
-    const [searchWidth, setSearchWidth] = useState("20%");
 
     useEffect(() => {
+        let qlty = quality;
+
         async function image() {
             try {
+                if (quality === "original") {
+                    setQuality("medium");
+                }
                 const client = createClient('FZ5iqlPvSokTYIvEAWCNw0o1M5nlqciqdjX0pn0AnGUQUKte57SwGFXA');
                 const images = await client.photos.search({ query, per_page: 80, orientation: "landscape" });
 
@@ -22,6 +26,12 @@ const Home = () => {
             }
         }
         image();
+
+        setTimeout(() => {
+            if (qlty === "original") {
+                setQuality("original");
+            }
+        }, 3000);
     }, [query]);
 
 
@@ -31,7 +41,10 @@ const Home = () => {
         let screenWidth = window.innerWidth;
 
         window.addEventListener("scroll", () => {
-            if (window.scrollY === 0) {
+            let rect = searchBar.getBoundingClientRect();
+            let x = rect.left;
+            let y = rect.top;
+            if (y !== 0) {
                 if (screenWidth > 768) {
                     searchBar.style.width = "20%";
                 }
@@ -70,11 +83,13 @@ const Home = () => {
                 <i className="fa-solid fa-magnifying-glass" id='searchButton' onClick={handleSearch} />
             </div>
 
-            {/* <div id='imgQuality' className='d-flex'>
-                Image Quality :
+            <div id='imgQuality' className='d-flex'>
+                <span>
+                    Image Quality :
+                </span>
                 <div onClick={() => { setQuality("medium") }}>Standard</div>
                 <div onClick={() => { setQuality("original") }}>HD</div>
-            </div> */}
+            </div>
 
             <div id="quickSearches" className='d-flex'>
                 <div className="searchCategories" onClick={() => { setQuery("Mountain") }}>Mountain</div>

@@ -154,6 +154,10 @@
   #quickSearches {
     width: 70%;
   }
+
+  #imgQuality {
+    width: 40%;
+  }
 }
 
 
@@ -172,6 +176,14 @@
 
   #searchBar {
     width: 30%;
+  }
+
+  #imgQuality {
+    width: 55%;
+  }
+
+  #imgQuality div {
+    width: 25%;
   }
 }
 
@@ -199,6 +211,14 @@
 
   #searchBar {
     width: 65%;
+  }
+
+  #imgQuality {
+    width: 100%;
+  }
+
+  #imgQuality span {
+    display: none;
   }
 
 
