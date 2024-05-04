@@ -32,7 +32,7 @@ const Home = () => {
                 setQuality("original");
             }
         }, 3000);
-    }, [query]);
+    }, [quality]);
 
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const Home = () => {
 
         window.addEventListener("scroll", () => {
             let rect = searchBar.getBoundingClientRect();
-            let x = rect.left;
+            // let x = rect.left;
             let y = rect.top;
             if (y > 0) {
                 if (screenWidth > 768) {
