@@ -32,7 +32,7 @@ const Home = () => {
                 setQuality("original");
             }
         }, 3000);
-    }, [quality]);
+    }, [quality, query]);
 
 
     useEffect(() => {
