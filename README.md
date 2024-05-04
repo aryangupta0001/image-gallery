@@ -2,8 +2,6 @@
 
 ![example workflow](https://github.com/aryangupta0001/image-gallery/actions/workflows/azure-static-web-apps-icy-water-01c06f000.yml/badge.svg)
 
-// .github/workflows/azure-static-web-apps-icy-water-01c06f000.yml
-
 
 # Getting Started with Create React App
 
